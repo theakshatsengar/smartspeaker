@@ -24,7 +24,7 @@ def chat_with_groq(data: ChatRequest):
     try:
         completion = groq_client.chat.completions.create(
             messages=[{"role": "user", "content": data.prompt}],
-            model="llama-3-70b-8192",
+            model="llama-3.3-70b-versatile",
             stream=False
         )
         return {"reply": completion.choices[0].message.content}
