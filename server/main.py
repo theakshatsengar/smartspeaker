@@ -23,7 +23,21 @@ class ChatRequest(BaseModel):
 def chat_with_groq(data: ChatRequest):
     try:
         completion = groq_client.chat.completions.create(
-            messages=[{"role": "user", "content": data.prompt}],
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You are a smart speaker assistant. "
+                        "Always respond in very short, precise sentences. "
+                        "Be clear, friendly, and to-the-point. "
+                        "Avoid long explanations. Act like a helpful AI."
+                    )
+                },
+                {
+                    "role": "user",
+                    "content": data.prompt
+                }
+            ],
             model="llama-3.3-70b-versatile",
             stream=False
         )
