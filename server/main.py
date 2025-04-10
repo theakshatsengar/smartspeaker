@@ -54,7 +54,7 @@ async def process_audio(audio: UploadFile = File(...)):
                     "content": user_text
                 }
             ],
-            model="llama-3-3-70b-versatile",
+            model="llama-3.3-70b-versatile",
             stream=False
         )
         llm_reply = completion.choices[0].message.content
